@@ -74,8 +74,6 @@
                     
             </section>
 
-            
-
           
             <a href="https://github.com/juliajuenger/MED8embint">GitHub Project Repository</a>
             <!-- Introduction -->
@@ -121,10 +119,10 @@
                    Drawing on Paul Dourish, this project addresses the absence of “meaningful engagement” in many interfaces<sup><a href="#ref1">1</a></sup>. At the same time, without frameworks like Laban Movement Analysis, systems risk ignoring the expressive richness of movement itself.<br>
                     <br>
                    The primary theoretical foundation comes from Paul Dourish, whose work establishes that interaction is fundamentally embodied, social, and situated. His argument rejects the notion of interaction as abstract input/output, instead positioning it as a process through which meaning is enacted in real time.<br>
-                    This project directly takes on his stance: the system does not translate movement into commands; it allows meaning to emerge through continuous engagement.
+                    This project directly takes on his stance: the system does not translate movement into commands; it allows meaning to emerge through continuous engagement.<br>
                     <br>
                     The second framework used for development is the Laban Movement Analysis (LMA). LMA is central to the conceptual and design approach. It breaks movement into key components of effort, space, body, and shape, allowing for a terminology to explain different types of movement within space. 
-                    Ludwig Wittgenstein famously said that "The limits of my language means the limits of my world"<sup><a href="#ref2">2</a></sup>. Excluding LMA, we lose a language for describing otherwise abstract or not easily separatable concepts, and with that, perhaps the ability to perceive and differentiate movement at all.<br>
+                    Ludwig Wittgenstein famously said that "The limits of my language means the limits of my world"<sup><a href="#ref2">2</a></sup>. Excluding LMA, we lose a language for describing otherwise abstract or not easily separatable concepts, and with that, perhaps the ability to perceive and differentiate movement at all.
                     LMA in this project helped guide the design choices to include a wide range of movement, rather than mapping simple spatial dimensions.
 
                 </p>
@@ -140,27 +138,27 @@
                     <br>
                     Particle color is controlled by total movement (a combination of speed and space). The system registers a difference between alpha levels in the current screen and a slightly delayed screen. This allows for creation of thresholds, in this case a palette of three different colors, where the lower range of total alpha difference is achieved through constricted, slow movement (Mapping most closely to the Laban parameters of Indirect, Light, Sustained, Bound); and a high alpha difference results from large, rapid movement (Free, Sudden, Strong, Direct), directly reflected in the visuals on the screen.<br>
                     <figure>
-                        <img src="setup.png" alt="Nodes" width="300">
+                        <img src="setup.png" alt="Nodes" width="1000">
                         <figcaption>Part of the network nodes in TouchDesigner.</figcaption>
                     </figure>
                     
                 
                     <br>
                     The audio feedback is controlled in two ways. Horizontal movement (left/right) controls stereo panning, positioning the sound within the stereo field. Vertical movement (top/bottom) controls the cutoff frequency of a low-pass filter applied to the music, reflecting the metaphor of "crouching" or "pressing" being a low energy movement, and stretching or reaching being a higher energy. This mapping introduces a spatial, directional dimension to the experience beyond mere movement qualities.<br>
-                    The audio interaction was implemented by spatially segmenting the camera image. By cropping the camera feed into horizontal and vertical regions, the system was able to separately analyze left/right and top/bottom movement.
+                    The audio interaction was implemented by spatially segmenting the camera image. By cropping the camera feed into horizontal and vertical regions, the system was able to separately analyze left/right and top/bottom movement.<br>
                     <br>
-                    This mapping creates continuous changes in the music based on the user’s spatial movement, reinforcing the embodied relationship between body motion, sound, and visual feedback.
+                    This mapping creates continuous changes in the music based on the user’s spatial movement, reinforcing the embodied relationship between body motion, sound, and visual feedback.<br>
 
                     <br>
                     Thus:
+
+                    <ul>
+                         <li> Fast, sharp movements (time/weight effort) produce more intense visual and sonic changes</li>
+                         <li>Smooth, sustained motion (flow) results in continuous, fluid modulation</li>
+                         <li>Directional movement (space) directly influences spatial audio and particle trajectories</li>
+                    </ul>
                     
-                    - Fast, sharp movements (time/weight effort) produce more intense visual and sonic changes
-                    
-                    - Smooth, sustained motion (flow) results in continuous, fluid modulation
-                   
-                    -  Directional movement (space) directly influences spatial audio and particle trajectories
-                    
-                    Rather than explicitly encoding Laban categories, the system implicitly responds to them through motion capture and mapping, allowing expressive qualities of sound and artistic visuals to emerge naturally through a combination of spatial dimension * movement quality.
+                    Rather than explicitly encoding Laban categories, the system implicitly responds to them through motion capture and mapping, allowing expressive qualities of sound and artistic visuals to emerge naturally through a combination of spatial dimension * movement quality.<br>
 
                     <br>
                     To increase interactivity and stylistic variety, three different "modes" were created. Each mode changes the particle color scheme, particle speed, and background music. Users can switch between modes using hand movements detected by the camera, inspired by early camera-based interaction systems such as the PlayStation EyeToy, successfully making the body part of the interface.
@@ -168,10 +166,11 @@
                     
                     <br>
                     The "Dreamy" mode represents the slowest mode, with calm music and slow particle speed. "Hype" has rapid, quickly evaporating particles and high-energy music. "Flow" lies in between. Beta user testing of the different modes showed that the change in particle speed and music prompted different movement styles–"Hype" generated Slashes, Dabs, and Flicks, while "Dreamy" made users explore Glides and Floats.<br>
-                    <img src="embint1.png" alt="Dreamy" width="300">
-                    <img src="embint3.png" alt="Hype" width="300">
-                    <img src="embint4.png" alt="Flow" width="300">
+                    <img src="embint1.png" alt="Dreamy" width="500">
+                    <img src="embint3.png" alt="Hype" width="500">
+                    <img src="embint4.png" alt="Flow" width="500">
                     
+                    <br>
 
                     Lastly, the particles "pulse" to the bass of the current song: a feature to increase accessibility to those of less hearing, and further increase the coupling between body and sound.<br>
                     
@@ -192,6 +191,7 @@
                     <br>
                     Future development could focus on refining the movement encoding so that it is not dependent on the user's body size or position relative to the screen. Currently, the use of alpha difference creates a functional threshold depending on the user's distance from the camera, which may restrict or bias interaction. Although this reliance on spatial positioning is common in body-interactive systems, further research could investigate alternative encoding strategies that ensure consistent responsiveness regardless of the user's proximity or scale. This could involve, for example, normalizing movement metrics to account for distance, or depth-sensing technology. By decoupling the response of particles and music from the user's distance, future iterations could enhance inclusivity and flexibility, making the system accessible to a wider range of users and environments. Moreover, exploring such solutions would contribute to the development of more solid embodied interfaces that emphasize movement quality over spatial constraints.<br>
                     Furthermore, the coupling of particle behavior and sound changes might prove to be too entangled, as users might want to change one but not the other. This could be achieved by for instance including a command, such as clenched fists, for changing one or the other separately.<br>
+                    <br>
                     Overall, this project demonstrates how cognition, embodiment, and digital system design intersect to highlight the complexity of Human-Computer Interaction. By integrating insights from psychology, neuroscience, user interface design, and symbolic artistic practices, the project illustrates how multiple disciplines can be synthesized to bridge internal experience with external digital expression.                </p>
             </section>
 
