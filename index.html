@@ -87,10 +87,10 @@
                     According to Paul Dourish, embodied interaction is the creation, manipulation, and sharing of meaning through engaged interaction with artifacts<sup><a href="#ref1">1</a></sup>. 
                     Instead of abstract interfaces such as keyboards or menus, interaction emerges through physical movement and spatial engagement. In interactive art systems, this approach allows users to influence audiovisual outcomes through gestures and bodily motion, turning the body itself into an interface. Dourish states that meaning emerges through movement-based interaction, not buttons or menus.
                     The body in this project thus functions as the primary interface. <br>
-                    
+                    <br>
 
                     The central question guiding this project is: How can real-time mapping of bodily motion to audiovisual output support heightened bodily awareness and creative expression? By considering different qualities of movement alongside spatial dimensions, and drawing on established theories of embodied interaction, this project aims to create a multi-dimensional experience that prompts users to experiment with diverse modes of moving. The significance of the design is its aim of making the body itself the interface, achieved through a straightforward, intuitive system that responds directly to users’ movements, eliminating the need for instructions or external guidance and generating immediate, lived interaction.<br>
-                   
+                   <br>
                     
                     
                     The goal of this project is to make the users become more aware of their bodies and movements through making it the interface, to explore different movement, and through mappings make the user’s body not only an input device but also a creative instrument, turning bodily motion into a musical performance and a digital painting.<br>
@@ -105,9 +105,9 @@
                 <p>
                     When developing interactive systems in symbiosis with the body, many parameters have to be considered. Not only is it vital to have an understanding of the affordances of a body in interaction with digital systems, but also the cognitive foundations of visual, spatial, and auditorial mappings. 
                     Different visual and artistic choices will--not always dependent on the developers intention--prompt different movement and induce particular ways of moving. The challenge is what parameters to change according to what movement--namely, what the mappings should be. It is easy to create a system that reacts to a body, but the risk is losing the link between cognition, body, and computer if the mappings and movement metaphors are mismatched to user expectations or the embodied feeling of what it is like to experience certain motions. This is where metaphorical mappings become the bridge between the digital system and the users embodied cognition.<br>
-                    
+                    <br>
                     Despite advances in interactive systems, many digital interfaces still rely on symbolic inputs that separate the relationship between bodily action and expressive outcome. This creates a gap between what the body does and what the system produces, limiting the depth of engagement, especially in creative contexts.<br>
-                   
+                   <br>
                     The central challenge, therefore, is how to successfully align design choices with the intended affect on the user (which in this scope is making the user aware of their body and movement, as well as prompt exploration of different movement qualities). The problem is to design an interaction paradigm where movement qualities (not just positions) shape outcomes, users experience interaction from a first-person, felt perspective, and sound and visuals respond in ways that reinforce embodied understanding.<br>
 
                 </p>
@@ -119,10 +119,10 @@
                 <h2>Theoretical Foundations &amp; Related Work</h2>
                 <p>
                    Drawing on Paul Dourish, this project addresses the absence of “meaningful engagement” in many interfaces<sup><a href="#ref1">1</a></sup>. At the same time, without frameworks like Laban Movement Analysis, systems risk ignoring the expressive richness of movement itself.<br>
-
+                    <br>
                    The primary theoretical foundation comes from Paul Dourish, whose work establishes that interaction is fundamentally embodied, social, and situated. His argument rejects the notion of interaction as abstract input/output, instead positioning it as a process through which meaning is enacted in real time.<br>
                     This project directly takes on his stance: the system does not translate movement into commands; it allows meaning to emerge through continuous engagement.
-
+                    <br>
                     The second framework used for development is the Laban Movement Analysis (LMA). LMA is central to the conceptual and design approach. It breaks movement into key components of effort, space, body, and shape, allowing for a terminology to explain different types of movement within space. 
                     Ludwig Wittgenstein famously said that "The limits of my language means the limits of my world"<sup><a href="#ref2">2</a></sup>. Excluding LMA, we lose a language for describing otherwise abstract or not easily separatable concepts, and with that, perhaps the ability to perceive and differentiate movement at all.<br>
                     LMA in this project helped guide the design choices to include a wide range of movement, rather than mapping simple spatial dimensions.
@@ -137,7 +137,7 @@
                 <p>
                     The audiovisual system was implemented in TouchDesigner<sup><a href="#ref3">3</a></sup> using a webcam and a particle-based system consisting of approximately 58,000 particles.
                     Movement detection was implemented using optical flow analysis through a custom MoveDetector component. The detected motion vectors were connected to the “wind” parameter of the particle system, allowing user movement to influence particle direction and produce natural-looking flow dynamics. <br>
-                    
+                    <br>
                     Particle color is controlled by total movement (a combination of speed and space). The system registers a difference between alpha levels in the current screen and a slightly delayed screen. This allows for creation of thresholds, in this case a palette of three different colors, where the lower range of total alpha difference is achieved through constricted, slow movement (Mapping most closely to the Laban parameters of Indirect, Light, Sustained, Bound); and a high alpha difference results from large, rapid movement (Free, Sudden, Strong, Direct), directly reflected in the visuals on the screen.<br>
                     <figure>
                         <img src="setup.png" alt="Nodes" width="300">
@@ -145,13 +145,13 @@
                     </figure>
                     
                 
-
+                    <br>
                     The audio feedback is controlled in two ways. Horizontal movement (left/right) controls stereo panning, positioning the sound within the stereo field. Vertical movement (top/bottom) controls the cutoff frequency of a low-pass filter applied to the music, reflecting the metaphor of "crouching" or "pressing" being a low energy movement, and stretching or reaching being a higher energy. This mapping introduces a spatial, directional dimension to the experience beyond mere movement qualities.<br>
                     The audio interaction was implemented by spatially segmenting the camera image. By cropping the camera feed into horizontal and vertical regions, the system was able to separately analyze left/right and top/bottom movement.
-                    
+                    <br>
                     This mapping creates continuous changes in the music based on the user’s spatial movement, reinforcing the embodied relationship between body motion, sound, and visual feedback.
 
-                    
+                    <br>
                     Thus:
                     
                     - Fast, sharp movements (time/weight effort) produce more intense visual and sonic changes
@@ -162,11 +162,11 @@
                     
                     Rather than explicitly encoding Laban categories, the system implicitly responds to them through motion capture and mapping, allowing expressive qualities of sound and artistic visuals to emerge naturally through a combination of spatial dimension * movement quality.
 
-            
+                    <br>
                     To increase interactivity and stylistic variety, three different "modes" were created. Each mode changes the particle color scheme, particle speed, and background music. Users can switch between modes using hand movements detected by the camera, inspired by early camera-based interaction systems such as the PlayStation EyeToy, successfully making the body part of the interface.
                     Mode switching was implemented by analyzing changes in RGB values in the camera feed’s top left corner. These changes were converted into numerical values and evaluated using logic operators that activate when the RGB change exceeds a specified threshold. A timer was added to prevent accidental switching and ensure that mode changes occur only through intentional gestures. The timer output was scaled to a range of 0–360 and used to control the radius of a circle, visually representing the progress of the mode change. <br>
                     
-                    
+                    <br>
                     The "Dreamy" mode represents the slowest mode, with calm music and slow particle speed. "Hype" has rapid, quickly evaporating particles and high-energy music. "Flow" lies in between. Beta user testing of the different modes showed that the change in particle speed and music prompted different movement styles–"Hype" generated Slashes, Dabs, and Flicks, while "Dreamy" made users explore Glides and Floats.<br>
                     <img src="embint1.png" alt="Dreamy" width="300">
                     <img src="embint3.png" alt="Hype" width="300">
@@ -175,7 +175,7 @@
 
                     Lastly, the particles "pulse" to the bass of the current song: a feature to increase accessibility to those of less hearing, and further increase the coupling between body and sound.<br>
                     
-                    
+                    <br>
                     Together, these mappings carefully and intentionally allow people to use their bodies not just as a UI element, but also an instrument and a paintbrush, generating a unique artwork that has been designed to not "reward" any specific way of movement, rather encourage exploration. <br>
                 
                 </p>
@@ -188,13 +188,11 @@
                 <div class="section-label">Section VI</div>
                 <h2>Discussion</h2>
                 <p>
-                    The intuitive system operates without the need for introduction or explicit instructions, as meaning emerges dynamically through users’ bodily interactions. This design approach demonstrates a practical alignment with Dourish’s theories of meaning-making and the conceptualization of the body as an interface, as well as highlights the system’s capacity to facilitate immediate, first-person engagement. By encouraging spontaneous exploration and prompting users to discover how movement shapes audiovisual feedback, the project exemplifies how embodied interaction can bridge the gap between physical action and digital outcomes through carefully considered embodied metaphors in design choices. This process validates the theoretical foundations while showing the usefulness of intuitive, body-centered systems in supporting creative expression and heightened bodily awareness. It also highlights the importance of theoretical foundations of movement such as Laban, where motion is a dynamic action on multiple quality dimensions beyond purely a spatial action.<br><br>
-
-                    Future development would include correcting the movement encoding to not be dependent on the size of your body on the screen. The alpha difference creates a functional threshold of the user's distance to the screen. Whereas it is not a methodological restriction, as many similar body interactive designs are also dependent on the distance positioning, it could be interesting to explore a version where the particles and music react similarly independent of your distance to the screen.<br>
-                    Furthermore, the coupling of particle behavior and sound changes might prove to be too entangled, as users might want to change one but not the other. This could be achieved by for instance including a command, such as clenched fists, for changing one or the other separately. 
-
-                    All in all, this project has shown the intricate coupling of cognition, embodiment, and digital system design; demonstrating that Human-Computer Interaction is an effort of delicately combining psychology, neuroscience, UI, and symbolic, artisitc language and metaphors to achieve a bridge between the inner and outer world. <br>
-                </p>
+                    The intuitive system operates without the need for introduction or explicit instructions, as meaning emerges dynamically through users’ bodily interactions. This design approach demonstrates a practical alignment with Dourish’s theories of meaning-making and the conceptualization of the body as an interface, as well as highlights the system’s capacity to facilitate immediate, first-person engagement. By encouraging spontaneous exploration and prompting users to discover how movement shapes audiovisual feedback, the project exemplifies how embodied interaction can bridge the gap between physical action and digital outcomes through carefully considered embodied metaphors in design choices. This process validates the theoretical foundations while showing the usefulness of intuitive, body-centered systems in supporting creative expression and heightened bodily awareness. It also highlights the importance of theoretical foundations of movement such as Laban, where motion is a dynamic action on multiple quality dimensions beyond purely a spatial action.<br>
+                    <br>
+                    Future development could focus on refining the movement encoding so that it is not dependent on the user's body size or position relative to the screen. Currently, the use of alpha difference creates a functional threshold depending on the user's distance from the camera, which may restrict or bias interaction. Although this reliance on spatial positioning is common in body-interactive systems, further research could investigate alternative encoding strategies that ensure consistent responsiveness regardless of the user's proximity or scale. This could involve, for example, normalizing movement metrics to account for distance, or depth-sensing technology. By decoupling the response of particles and music from the user's distance, future iterations could enhance inclusivity and flexibility, making the system accessible to a wider range of users and environments. Moreover, exploring such solutions would contribute to the development of more solid embodied interfaces that emphasize movement quality over spatial constraints.<br>
+                    Furthermore, the coupling of particle behavior and sound changes might prove to be too entangled, as users might want to change one but not the other. This could be achieved by for instance including a command, such as clenched fists, for changing one or the other separately.<br>
+                    Overall, this project demonstrates how cognition, embodiment, and digital system design intersect to highlight the complexity of Human-Computer Interaction. By integrating insights from psychology, neuroscience, user interface design, and symbolic artistic practices, the project illustrates how multiple disciplines can be synthesized to bridge internal experience with external digital expression.                </p>
             </section>
 
             <h2>References</h2>
